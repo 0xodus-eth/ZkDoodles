@@ -1,0 +1,7 @@
+[package]
+name = "zk_ecdsa"
+type = "bin"
+authors = ["0xodus"]
+
+[dependencies]
+ecrecover = { tag = "v1.0.0", git = "https://github.com/colinnielsen/ecrecover-noir" }
