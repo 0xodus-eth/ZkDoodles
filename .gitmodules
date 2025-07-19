@@ -1,0 +1,6 @@
+[submodule "zk_panagram/contracts/lib/forge-std"]
+	path = zk_panagram/contracts/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "zk_panagram/contracts/lib/openzeppelin-contracts"]
+	path = zk_panagram/contracts/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
