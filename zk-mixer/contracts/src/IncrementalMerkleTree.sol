@@ -71,6 +71,12 @@ contract IncrementalMerkleTree {
         return _nextLeafIndex;
     }
 
+    /**
+     *
+     * @param _root the root of the merkle tree to check
+     * @return true if the root is known, false otherwise
+     * @dev This function checks if the given root is one of the known roots in the
+     */
     function isKnownRoot(bytes32 _root) public view returns (bool) {
         // check if the root matches one in s_roots
         if (_root == bytes32(0)) {
@@ -91,6 +97,13 @@ contract IncrementalMerkleTree {
         return false;
     }
 
+    /**
+     *
+     * @param i the index of the zero element to return
+     * @return the zero element at the given index
+     * @dev This function returns the zero element at the given index in the incremental merkle tree.
+     * The zero elements are precomputed and stored in the contract.
+     */
     function zeros(uint32 i) public pure returns (bytes32) {
         if (i == 0) return bytes32(0x0d823319708ab99ec915efd4f7e03d11ca1790918e8f04cd14100aceca2aa9ff);
         else if (i == 1) return bytes32(0x170a9598425eb05eb8dc06986c6afc717811e874326a79576c02d338bdf14f13);

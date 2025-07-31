@@ -5,6 +5,13 @@ pragma solidity ^0.8.24;
 import {IVerifier} from "src/Verifier.sol";
 import {IncrementalMerkleTree, Poseidon2} from "src/IncrementalMerkleTree.sol";
 
+/**
+ * @title Mixer
+ * @dev A smart contract that implements a zk mixer for private transactions.
+ * It allows users to deposit Ether in a way that obscures the source of funds and withdraw
+ * @author 0x
+ * @notice
+ */
 contract Mixer is IncrementalMerkleTree {
     IVerifier public immutable i_verifier;
 
@@ -49,6 +56,10 @@ contract Mixer is IncrementalMerkleTree {
 
     /// @notice Withdraw ether from the mixer in a private way
     /// @param _proof proof that the user has the right to withdraw a certain commitment
+    /// @param _root the root of the merkle tree used in the proof
+    /// @param _nullifierHash the hash of the nullifier used in the proof
+    /// @param _recipient the address to which the funds will be sent
+    /// @dev The proof is generated off-chain using the nullifier and secret
     function withdraw(bytes memory _proof, bytes32 _root, bytes32 _nullifierHash, address _recipient) external {
         // check that the root used int the proof matches the onchain root
         if (!isKnownRoot(_root)) {
